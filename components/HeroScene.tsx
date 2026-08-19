@@ -51,20 +51,31 @@ export default function HeroScene() {
         const volcanoes = sceneRef.current.querySelector(".scene-volcanoes");
         const foreground = sceneRef.current.querySelector(".scene-foreground");
 
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.6,
-          },
-        })
-          .to(far, { y: -30, ease: "none" }, 0)
-          .to(volcanoes, { y: -70, ease: "none" }, 0)
-          .to(foreground, { y: -140, ease: "none" }, 0)
-          .to(sceneRef.current, { scale: 1.12, ease: "none" }, 0)
-          .to(textRef.current, { y: -120, opacity: 0, ease: "none" }, 0)
-          .to(cueRef.current, { opacity: 0, ease: "none" }, 0);
+        const mm = gsap.matchMedia();
+        mm.add(
+          { isDesktop: "(min-width: 768px)", isMobile: "(max-width: 767px)" },
+          ({ conditions }) => {
+            const { isDesktop } = conditions as { isDesktop: boolean };
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.6,
+              },
+            })
+              .to(far, { y: -30, ease: "none" }, 0)
+              .to(volcanoes, { y: -70, ease: "none" }, 0)
+              .to(foreground, { y: -140, ease: "none" }, 0)
+              .to(textRef.current, { y: -120, opacity: 0, ease: "none" }, 0)
+              .to(cueRef.current, { opacity: 0, ease: "none" }, 0);
+
+            // el zoom de la escena completa es el más costoso: solo en escritorio
+            if (isDesktop) {
+              tl.to(sceneRef.current, { scale: 1.12, ease: "none" }, 0);
+            }
+          }
+        );
       }
     }, sectionRef);
 

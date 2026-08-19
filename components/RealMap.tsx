@@ -67,6 +67,8 @@ export default function RealMap({
       bearing: 0,
       attributionControl: { compact: true },
       cooperativeGestures: true,
+      antialias: false,
+      refreshExpiredTiles: false,
     });
     mapRef.current = map;
 

@@ -96,12 +96,15 @@ body {
 
 .scene-clouds {
   animation: drift-clouds 70s ease-in-out infinite;
+  will-change: transform;
 }
 .scene-mist {
   animation: drift-mist 46s ease-in-out infinite;
+  will-change: transform;
 }
 .scene-smoke {
   animation: rise-smoke 9s ease-out infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes moon-glow-pulse {
@@ -110,6 +113,7 @@ body {
 }
 .scene-moon {
   animation: moon-glow-pulse 12s ease-in-out infinite;
+  will-change: opacity;
 }
 
 @keyframes star-twinkle {
@@ -120,6 +124,7 @@ body {
   animation: star-twinkle 4.5s ease-in-out infinite;
   transform-box: fill-box;
   transform-origin: center;
+  will-change: opacity;
 }
 
 /* el quetzal traza un recorrido corto justo en el hueco entre los dos volcanes */
@@ -134,6 +139,7 @@ body {
 }
 .scene-quetzal-flight {
   animation: quetzal-flight 16s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes quetzal-wing-flap {
@@ -142,6 +148,7 @@ body {
 }
 .scene-quetzal-wing {
   animation: quetzal-wing-flap 0.4s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes scroll-cue-pulse {
@@ -159,6 +166,7 @@ body {
 }
 .marker-pulse {
   animation: marker-pulse 2.6s ease-out infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes map-panel-fade {

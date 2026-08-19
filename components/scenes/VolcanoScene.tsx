@@ -38,10 +38,10 @@ export default function VolcanoScene() {
           <stop offset="100%" stopColor="#0a0f0c" stopOpacity="1" />
         </linearGradient>
         <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="14" />
+          <feGaussianBlur stdDeviation="10" />
         </filter>
         <filter id="softBlurLg" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="26" />
+          <feGaussianBlur stdDeviation="18" />
         </filter>
         <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#e9e4d8" stopOpacity="0.35" />

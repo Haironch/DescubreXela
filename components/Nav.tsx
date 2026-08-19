@@ -22,7 +22,7 @@ export default function Nav() {
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 transition-colors duration-500 sm:px-10 ${
-        solid ? "bg-xela-black/70 backdrop-blur-md" : "bg-transparent"
+        solid ? "bg-xela-black/90" : "bg-transparent"
       }`}
     >
       <button

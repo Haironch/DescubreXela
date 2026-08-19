@@ -49,21 +49,25 @@ export default function DestinationSection({
         .fromTo(mid, { y: 60 }, { y: -60, ease: "none" }, 0)
         .fromTo(near, { y: 110 }, { y: -110, ease: "none" }, 0);
 
+      // el zoom de alejamiento es el más costoso en frame: solo en escritorio
       if (pullback) {
-        gsap.fromTo(
-          sceneRef.current,
-          { scale: 1.28 },
-          {
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top bottom",
-              end: "center center",
-              scrub: 0.6,
-            },
-          }
-        );
+        gsap.matchMedia().add({ isDesktop: "(min-width: 768px)" }, ({ conditions }) => {
+          if (!(conditions as { isDesktop: boolean }).isDesktop) return;
+          gsap.fromTo(
+            sceneRef.current,
+            { scale: 1.28 },
+            {
+              scale: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top bottom",
+                end: "center center",
+                scrub: 0.6,
+              },
+            }
+          );
+        });
       }
 
       gsap.fromTo(

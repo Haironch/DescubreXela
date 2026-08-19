@@ -25,7 +25,7 @@ export default function AscentScene() {
           <stop offset="100%" stopColor="#0a0f0c" />
         </linearGradient>
         <filter id="ascentBlur" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="10" />
+          <feGaussianBlur stdDeviation="7" />
         </filter>
       </defs>
 
