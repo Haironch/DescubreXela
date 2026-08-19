@@ -69,6 +69,14 @@ body {
   font-weight: 500;
 }
 
+/* números sueltos ("01") se leen mal con tracking tan ancho */
+.eyebrow-number {
+  font-family: var(--font-sans), sans-serif;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
 /* Movimiento ambiental de la escena de volcanes */
 @keyframes drift-clouds {
   0% { transform: translateX(-2.5%); }

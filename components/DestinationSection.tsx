@@ -100,7 +100,7 @@ export default function DestinationSection({
         className="relative z-10 w-full px-6 pb-20 sm:px-10 md:pb-28"
       >
         <div className="mx-auto max-w-6xl">
-          <p className="eyebrow text-xela-ember-soft">{destination.number}</p>
+          <p className="eyebrow-number text-xela-ember-soft">{destination.number}</p>
           <h2 className="title-display mt-3 text-5xl text-xela-mist sm:text-6xl md:text-7xl">
             {destination.name.toUpperCase()}
           </h2>

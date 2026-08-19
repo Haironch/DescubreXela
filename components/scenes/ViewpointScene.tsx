@@ -28,6 +28,10 @@ export default function ViewpointScene() {
           <stop offset="0%" stopColor="#2a2016" />
           <stop offset="100%" stopColor="#0a0f0c" />
         </linearGradient>
+        <linearGradient id="textScrim" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0a0f0c" stopOpacity="0" />
+          <stop offset="100%" stopColor="#0a0f0c" stopOpacity="0.85" />
+        </linearGradient>
       </defs>
 
       <rect width="1440" height="900" fill="url(#viewSky)" />
@@ -51,12 +55,15 @@ export default function ViewpointScene() {
         />
       </g>
 
+      {/* velo para legibilidad del texto, independiente de la proporción de pantalla */}
+      <rect x="0" y="500" width="1440" height="400" fill="url(#textScrim)" />
+
       {/* baranda del mirador en primer plano */}
       <g className="scene-near">
-        <rect x="0" y="700" width="1440" height="200" fill="url(#deckWood)" />
-        <rect x="0" y="680" width="1440" height="14" fill="#20180f" opacity="0.9" />
+        <rect x="0" y="800" width="1440" height="200" fill="url(#deckWood)" />
+        <rect x="0" y="780" width="1440" height="14" fill="#20180f" opacity="0.9" />
         {Array.from({ length: 13 }).map((_, i) => (
-          <rect key={i} x={40 + i * 112} y="620" width="10" height="80" fill="#20180f" opacity="0.85" />
+          <rect key={i} x={40 + i * 112} y="740" width="10" height="60" fill="#20180f" opacity="0.85" />
         ))}
       </g>
     </svg>
