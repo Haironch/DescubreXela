@@ -6,7 +6,7 @@ import { scrollToId } from "@/components/SmoothScroll";
 import CityScene from "@/components/scenes/CityScene";
 import AscentScene from "@/components/scenes/AscentScene";
 import ViewpointScene from "@/components/scenes/ViewpointScene";
-import type { Destination } from "@/data/destinations";
+import { directionsUrls, type Destination } from "@/data/destinations";
 
 const scenes = {
   city: CityScene,
@@ -27,6 +27,7 @@ export default function DestinationSection({
   const sceneRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const SceneComponent = scenes[variant];
+  const directions = directionsUrls(destination);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -110,9 +111,27 @@ export default function DestinationSection({
           <p className="mt-4 max-w-md text-sm leading-relaxed text-xela-stone-light">
             {destination.description}
           </p>
+          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <a
+              href={directions.googleMaps}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-xela-ember px-5 py-2.5 text-sm font-medium tracking-wide text-xela-black transition-colors hover:bg-xela-ember-soft"
+            >
+              Cómo llegar <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href={directions.waze}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm tracking-wide text-xela-mist/70 transition-colors hover:text-xela-ember-soft"
+            >
+              Abrir en Waze
+            </a>
+          </div>
           <button
             onClick={() => scrollToId("#mapa")}
-            className="mt-7 inline-flex items-center gap-2 text-sm tracking-wide text-xela-mist/70 transition-colors hover:text-xela-ember-soft"
+            className="mt-4 inline-flex items-center gap-2 text-sm tracking-wide text-xela-mist/70 transition-colors hover:text-xela-ember-soft"
           >
             <span aria-hidden="true">←</span> Volver al mapa
           </button>

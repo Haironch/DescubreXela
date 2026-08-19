@@ -14,6 +14,14 @@ export type Destination = {
 
 export const XELA_CENTER: [number, number] = [-91.51831195771608, 14.834737137663065];
 
+export function directionsUrls(d: Destination) {
+  const [lng, lat] = d.lngLat;
+  return {
+    googleMaps: `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
+    waze: `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`,
+  };
+}
+
 export const destinations: Destination[] = [
   {
     id: "parque-central",
