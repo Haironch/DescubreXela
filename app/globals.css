@@ -112,6 +112,16 @@ body {
   animation: moon-glow-pulse 12s ease-in-out infinite;
 }
 
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.9; }
+}
+.scene-star {
+  animation: star-twinkle 4.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 /* el quetzal traza un recorrido corto justo en el hueco entre los dos volcanes */
 @keyframes quetzal-flight {
   0%   { transform: translate(-160px, 40px) rotate(-8deg); }
@@ -166,6 +176,7 @@ body {
   .scroll-cue,
   .marker-pulse,
   .scene-moon,
+  .scene-star,
   .scene-quetzal-flight,
   .scene-quetzal-wing {
     animation: none;

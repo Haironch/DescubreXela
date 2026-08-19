@@ -58,6 +58,30 @@ export default function VolcanoScene() {
       <rect width="1440" height="810" fill="url(#sky)" />
       <rect width="1440" height="810" fill="url(#horizonGlow)" />
 
+      {/* estrellas — dan vida al cielo despejado en pantallas altas y angostas */}
+      <g className="scene-stars">
+        {[
+          [60, 60, 1.2, 0.55], [140, 130, 0.9, 0.4], [230, 40, 1, 0.5],
+          [310, 170, 1.3, 0.6], [90, 220, 0.8, 0.35], [400, 90, 1, 0.45],
+          [480, 200, 0.9, 0.4], [560, 50, 1.1, 0.5], [640, 150, 0.8, 0.35],
+          [180, 30, 1, 0.45], [720, 70, 1.2, 0.55], [860, 190, 0.9, 0.4],
+          [940, 40, 1, 0.5], [1010, 130, 1.1, 0.5], [1080, 220, 0.8, 0.35],
+          [1250, 90, 1, 0.45], [1330, 200, 0.9, 0.4], [1390, 55, 1.2, 0.5],
+          [30, 150, 0.8, 0.3], [1150, 150, 1, 0.4],
+        ].map(([cx, cy, r, o], i) => (
+          <circle
+            key={i}
+            className="scene-star"
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="#e9e4d8"
+            opacity={o}
+            style={{ animationDelay: `${(i % 7) * 0.6}s` }}
+          />
+        ))}
+      </g>
+
       {/* luna — símbolo característico de las noches de Xela */}
       <g className="scene-moon">
         <circle cx="1180" cy="150" r="120" fill="url(#moonGlow)" />
