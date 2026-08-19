@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+:root {
+  /* Paleta Xela — montañas, volcanes, ciudad, atardecer */
+  --xela-black: #0a0f0c;        /* fondo base, casi negro con tinte verde */
+  --xela-night-blue: #10171f;   /* azul oscuro de horizonte / cielo profundo */
+  --xela-forest: #1c2e22;       /* verde profundo de montaña */
+  --xela-forest-2: #2a4033;     /* verde profundo, capa media */
+  --xela-stone: #6b6a63;        /* gris piedra */
+  --xela-stone-light: #a8a49a;  /* gris piedra claro, texto secundario */
+  --xela-earth: #8a6b4f;        /* tono tierra */
+  --xela-earth-dark: #4a3826;   /* tono tierra oscuro */
+  --xela-mist: #e9e4d8;         /* neblina / crema, texto principal sobre fondo oscuro */
+  --xela-ember: #d98a4f;        /* acento cálido — humo al atardecer, luces */
+  --xela-ember-soft: #e8b27f;   /* acento cálido suave */
+
+  --background: var(--xela-black);
+  --foreground: var(--xela-mist);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-xela-black: var(--xela-black);
+  --color-xela-night-blue: var(--xela-night-blue);
+  --color-xela-forest: var(--xela-forest);
+  --color-xela-forest-2: var(--xela-forest-2);
+  --color-xela-stone: var(--xela-stone);
+  --color-xela-stone-light: var(--xela-stone-light);
+  --color-xela-earth: var(--xela-earth);
+  --color-xela-earth-dark: var(--xela-earth-dark);
+  --color-xela-mist: var(--xela-mist);
+  --color-xela-ember: var(--xela-ember);
+  --color-xela-ember-soft: var(--xela-ember-soft);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-manrope);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--xela-ember);
+  color: var(--xela-black);
+}
+
+/* Utilidad para títulos cinematográficos */
+.title-display {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  font-family: var(--font-sans), sans-serif;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Movimiento ambiental de la escena de volcanes */
+@keyframes drift-clouds {
+  0% { transform: translateX(-2.5%); }
+  50% { transform: translateX(2.5%); }
+  100% { transform: translateX(-2.5%); }
+}
+@keyframes drift-mist {
+  0% { transform: translateX(-1.5%); }
+  50% { transform: translateX(1.8%); }
+  100% { transform: translateX(-1.5%); }
+}
+@keyframes rise-smoke {
+  0%   { opacity: 0.9; transform: translateY(0) scale(1); }
+  60%  { opacity: 0.5; transform: translateY(-14px) scale(1.15); }
+  100% { opacity: 0;   transform: translateY(-30px) scale(1.35); }
+}
+
+.scene-clouds {
+  animation: drift-clouds 70s ease-in-out infinite;
+}
+.scene-mist {
+  animation: drift-mist 46s ease-in-out infinite;
+}
+.scene-smoke {
+  animation: rise-smoke 9s ease-out infinite;
+}
+
+@keyframes moon-glow-pulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+.scene-moon {
+  animation: moon-glow-pulse 12s ease-in-out infinite;
+}
+
+/* el quetzal traza un recorrido corto justo en el hueco entre los dos volcanes */
+@keyframes quetzal-flight {
+  0%   { transform: translate(-160px, 40px) rotate(-8deg); }
+  20%  { transform: translate(-40px, -22px) rotate(-2deg); }
+  40%  { transform: translate(92px, -56px) rotate(4deg); }
+  50%  { transform: translate(60px, -40px) rotate(2deg); }
+  65%  { transform: translate(-30px, -8px) rotate(-3deg); }
+  85%  { transform: translate(-140px, 32px) rotate(-7deg); }
+  100% { transform: translate(-160px, 40px) rotate(-8deg); }
+}
+.scene-quetzal-flight {
+  animation: quetzal-flight 16s ease-in-out infinite;
+}
+
+@keyframes quetzal-wing-flap {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.22); }
+}
+.scene-quetzal-wing {
+  animation: quetzal-wing-flap 0.4s ease-in-out infinite;
+}
+
+@keyframes scroll-cue-pulse {
+  0%, 100% { opacity: 0.55; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(4px); }
+}
+.scroll-cue {
+  animation: scroll-cue-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes marker-pulse {
+  0%   { transform: scale(1); opacity: 0.7; }
+  70%  { transform: scale(1.9); opacity: 0; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+.marker-pulse {
+  animation: marker-pulse 2.6s ease-out infinite;
+}
+
+@keyframes map-panel-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.map-panel-fade {
+  animation: map-panel-fade 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-clouds,
+  .scene-mist,
+  .scene-smoke,
+  .scroll-cue,
+  .marker-pulse,
+  .scene-moon,
+  .scene-quetzal-flight,
+  .scene-quetzal-wing {
+    animation: none;
+  }
+}
+
+/* Mapa real (MapLibre) teñido para que combine con la identidad de Xela */
+.real-map-canvas .maplibregl-ctrl-attrib {
+  background: transparent;
+  font-size: 9px;
+  opacity: 0.5;
+}
+.real-map-canvas .maplibregl-ctrl-attrib a {
+  color: var(--xela-stone-light);
+}
+
+/* Scrollbar discreto */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--xela-stone);
+  border-radius: 3px;
+}
