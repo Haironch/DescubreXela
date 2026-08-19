@@ -113,20 +113,12 @@ export default function DestinationSection({
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
             <a
-              href={directions.googleMaps}
+              href={directions.waze}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-xela-ember px-5 py-2.5 text-sm font-medium tracking-wide text-xela-black transition-colors hover:bg-xela-ember-soft"
             >
-              Cómo llegar <span aria-hidden="true">→</span>
-            </a>
-            <a
-              href={directions.waze}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm tracking-wide text-xela-mist/70 transition-colors hover:text-xela-ember-soft"
-            >
-              Abrir en Waze
+              Abrir en Waze <span aria-hidden="true">→</span>
             </a>
           </div>
           <button
