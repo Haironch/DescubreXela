@@ -78,9 +78,17 @@ export default function RealMap({
       console.error("maplibre error:", e?.error?.message || e);
     });
 
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
     map.on("load", () => {
       map.resize();
-      map.flyTo({ pitch: 48, bearing: -12, duration: 1200, essential: true });
+      // la inclinación 3D es la animación más pesada del sitio: más suave en móvil
+      map.flyTo({
+        pitch: isMobile ? 30 : 48,
+        bearing: -12,
+        duration: isMobile ? 900 : 1200,
+        essential: true,
+      });
     });
 
     destinations.forEach((d) => {
@@ -117,12 +125,13 @@ export default function RealMap({
     const active = destinations.find((d) => d.id === activeId);
     const fly = active ? FLY_OPTIONS[active.id as keyof typeof FLY_OPTIONS] : undefined;
     if (active && fly) {
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
       map.flyTo({
         center: active.lngLat,
         zoom: fly.zoom,
-        pitch: fly.pitch,
+        pitch: isMobile ? Math.min(fly.pitch, 32) : fly.pitch,
         bearing: fly.bearing,
-        duration: 1600,
+        duration: isMobile ? 1100 : 1600,
         curve: 1.3,
         essential: true,
       });

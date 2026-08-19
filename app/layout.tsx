@@ -5,7 +5,7 @@ import "./globals.css";
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["500"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -13,7 +13,7 @@ const fraunces = Fraunces({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500"],
   display: "swap",
 });
 

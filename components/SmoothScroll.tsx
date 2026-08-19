@@ -19,8 +19,17 @@ export default function SmoothScroll({
 
     if (reduceMotion) return;
 
+    if (isMobile) {
+      // el scroll táctil nativo ya es más fluido que cualquier simulación por JS;
+      // normalizeScroll evita el salto al colapsar la barra de direcciones.
+      ScrollTrigger.normalizeScroll(true);
+      return () => {
+        ScrollTrigger.normalizeScroll(false);
+      };
+    }
+
     const lenis = new Lenis({
-      duration: isMobile ? 0.9 : 1.2,
+      duration: 1.2,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
       touchMultiplier: 1.4,
