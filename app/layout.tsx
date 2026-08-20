@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Piazzolla, Figtree } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const piazzolla = Piazzolla({
+  variable: "--font-piazzolla",
   subsets: ["latin"],
-  weight: ["500"],
+  weight: ["500", "600"],
   style: ["normal", "italic"],
   display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const figtree = Figtree({
+  variable: "--font-figtree",
   subsets: ["latin"],
   weight: ["300", "400", "500"],
   display: "swap",
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}
+      className={`${piazzolla.variable} ${figtree.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-xela-black text-xela-mist">
         {children}

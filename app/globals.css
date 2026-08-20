@@ -34,8 +34,8 @@
   --color-xela-ember: var(--xela-ember);
   --color-xela-ember-soft: var(--xela-ember-soft);
 
-  --font-display: var(--font-fraunces);
-  --font-sans: var(--font-manrope);
+  --font-display: var(--font-piazzolla);
+  --font-sans: var(--font-figtree);
 }
 
 html {

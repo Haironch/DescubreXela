@@ -94,18 +94,18 @@ export default function HeroScene() {
 
       <div
         ref={textRef}
-        className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center md:items-start md:justify-center md:px-16 md:text-left lg:px-24"
       >
         <p className="hero-eyebrow eyebrow text-xela-ember-soft">
           Quetzaltenango · Guatemala
         </p>
-        <h1 className="hero-title title-display mt-4 text-[4.2rem] leading-[0.95] text-xela-mist sm:text-[6rem] md:text-[8rem]">
+        <h1 className="hero-title title-display mt-4 text-[4.2rem] leading-[0.95] text-xela-mist sm:text-[6rem] md:text-[7.5rem]">
           XELA
         </h1>
         <p className="hero-subtitle mt-5 text-sm font-light tracking-[0.2em] text-xela-stone-light sm:text-base">
           QUETZALTENANGO, GUATEMALA
         </p>
-        <p className="hero-tagline title-display mt-6 text-lg italic text-xela-mist/80 sm:text-xl">
+        <p className="hero-tagline title-display mt-6 max-w-md text-lg italic text-xela-mist/80 sm:text-xl">
           Una ciudad que se descubre caminando.
         </p>
       </div>

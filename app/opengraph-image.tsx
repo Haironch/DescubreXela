@@ -7,8 +7,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
-  const fraunces = await readFile(
-    path.join(process.cwd(), "app/assets/fraunces-500-xela.ttf")
+  const figtree = await readFile(
+    path.join(process.cwd(), "app/assets/figtree-700-xela.ttf")
   );
 
   return new ImageResponse(
@@ -92,9 +92,10 @@ export default async function OpengraphImage() {
         </div>
         <div
           style={{
-            fontFamily: "Fraunces",
-            fontWeight: 500,
+            fontFamily: "Figtree",
+            fontWeight: 700,
             fontSize: 190,
+            letterSpacing: -4,
             color: "#e9e4d8",
             display: "flex",
             lineHeight: 1,
@@ -119,10 +120,10 @@ export default async function OpengraphImage() {
       ...size,
       fonts: [
         {
-          name: "Fraunces",
-          data: fraunces,
+          name: "Figtree",
+          data: figtree,
           style: "normal",
-          weight: 500,
+          weight: 700,
         },
       ],
     }
