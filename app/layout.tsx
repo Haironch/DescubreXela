@@ -17,10 +17,28 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const siteUrl = "https://descubre-xela.vercel.app";
+const title = "Xela — Una ciudad que se descubre caminando";
+const description =
+  "Descubre Quetzaltenango: sus volcanes, su Parque Central, El Baúl y el Mirador Rutzil en una experiencia visual e interactiva.";
+
 export const metadata: Metadata = {
-  title: "Xela — Una ciudad que se descubre caminando",
-  description:
-    "Descubre Quetzaltenango: sus volcanes, su Parque Central, El Baúl y el Mirador Rutzil en una experiencia visual e interactiva.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: "DescubreXela",
+    locale: "es_GT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
