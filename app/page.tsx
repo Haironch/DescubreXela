@@ -14,11 +14,16 @@ export default function Home() {
         <HeroScene />
         <MapSection />
         <DestinationSection destination={destinations[0]} variant="city" />
-        <DestinationSection destination={destinations[1]} variant="ascent" />
+        <DestinationSection
+          destination={destinations[1]}
+          variant="ascent"
+          align="right"
+        />
         <DestinationSection
           destination={destinations[2]}
           variant="viewpoint"
           pullback
+          anchor="top"
         />
         <ActivitiesSection />
       </main>

@@ -18,10 +18,14 @@ export default function DestinationSection({
   destination,
   variant,
   pullback = false,
+  align = "left",
+  anchor = "bottom",
 }: {
   destination: Destination;
   variant: keyof typeof scenes;
   pullback?: boolean;
+  align?: "left" | "right";
+  anchor?: "top" | "bottom";
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sceneRef = useRef<HTMLDivElement>(null);
@@ -90,11 +94,16 @@ export default function DestinationSection({
     return () => ctx.revert();
   }, [pullback]);
 
+  const isRight = align === "right";
+  const isTop = anchor === "top";
+
   return (
     <section
       ref={sectionRef}
       id={destination.id}
-      className="relative flex min-h-screen w-full items-end overflow-hidden bg-xela-black"
+      className={`relative flex min-h-screen w-full overflow-hidden bg-xela-black ${
+        isTop ? "items-start" : "items-end"
+      }`}
     >
       <div ref={sceneRef} className="absolute inset-0 will-change-transform">
         <SceneComponent />
@@ -102,9 +111,15 @@ export default function DestinationSection({
 
       <div
         ref={textRef}
-        className="relative z-10 w-full px-6 pb-20 sm:px-10 md:pb-28"
+        className={`relative z-10 w-full px-6 sm:px-10 ${
+          isTop ? "pt-28 md:pt-36" : "pb-20 md:pb-28"
+        }`}
       >
-        <div className="mx-auto max-w-6xl">
+        <div
+          className={`mx-auto flex max-w-6xl flex-col ${
+            isRight ? "items-end text-right" : "items-start text-left"
+          }`}
+        >
           <p className="eyebrow-number text-xela-ember-soft">{destination.number}</p>
           <h2 className="title-display mt-3 text-5xl text-xela-mist sm:text-6xl md:text-7xl">
             {destination.name.toUpperCase()}
@@ -115,7 +130,11 @@ export default function DestinationSection({
           <p className="mt-4 max-w-md text-sm leading-relaxed text-xela-stone-light">
             {destination.description}
           </p>
-          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <div
+            className={`mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 ${
+              isRight ? "justify-end" : ""
+            }`}
+          >
             <a
               href={directions.waze}
               target="_blank"
