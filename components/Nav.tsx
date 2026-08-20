@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { scrollToId } from "@/components/SmoothScroll";
 
 const links = [
-  { label: "Inicio", href: "#inicio" },
   { label: "Explorar Xela", href: "#mapa" },
   { label: "Lugares", href: "#parque-central" },
+  { label: "Actividades", href: "#actividades" },
 ];
 
 export default function Nav() {
@@ -21,22 +21,22 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 transition-colors duration-500 sm:px-10 ${
+      className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-4 py-5 transition-colors duration-500 sm:px-10 ${
         solid ? "bg-xela-black/90" : "bg-transparent"
       }`}
     >
       <button
         onClick={() => scrollToId("#inicio")}
-        className="title-display text-sm tracking-[0.15em] text-xela-mist"
+        className="title-display shrink-0 text-sm tracking-[0.15em] text-xela-mist"
       >
         XELA
       </button>
-      <ul className="flex items-center gap-6 text-xs font-light tracking-[0.15em] text-xela-mist/80 sm:gap-8">
+      <ul className="flex items-center gap-3 text-[10px] font-light tracking-[0.06em] text-xela-mist/80 sm:gap-8 sm:text-xs sm:tracking-[0.15em]">
         {links.map((l) => (
           <li key={l.href}>
             <button
               onClick={() => scrollToId(l.href)}
-              className="transition-colors hover:text-xela-ember-soft"
+              className="whitespace-nowrap transition-colors hover:text-xela-ember-soft"
             >
               {l.label.toUpperCase()}
             </button>
