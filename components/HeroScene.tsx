@@ -4,8 +4,10 @@ import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import VolcanoScene from "@/components/scenes/VolcanoScene";
 import { scrollToId } from "@/components/SmoothScroll";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-export default function HeroScene() {
+export default function HeroScene({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
   const sectionRef = useRef<HTMLElement>(null);
   const sceneRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -97,16 +99,16 @@ export default function HeroScene() {
         className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center md:items-start md:justify-center md:px-16 md:text-left lg:px-24"
       >
         <p className="hero-eyebrow eyebrow text-xela-ember-soft">
-          Quetzaltenango · Guatemala
+          {t.hero.eyebrow}
         </p>
         <h1 className="hero-title title-display mt-4 text-[4.2rem] leading-[0.95] text-xela-mist sm:text-[6rem] md:text-[7.5rem]">
           XELA
         </h1>
         <p className="hero-subtitle mt-5 text-sm font-light tracking-[0.2em] text-xela-stone-light sm:text-base">
-          QUETZALTENANGO, GUATEMALA
+          {t.hero.subtitle}
         </p>
         <p className="hero-tagline title-display mt-6 max-w-md text-lg italic text-xela-mist/80 sm:text-xl">
-          Una ciudad que se descubre caminando.
+          {t.hero.tagline}
         </p>
       </div>
 
@@ -114,9 +116,9 @@ export default function HeroScene() {
         ref={cueRef}
         onClick={() => scrollToId("#mapa")}
         className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 cursor-pointer text-xs font-light tracking-[0.25em] text-xela-mist/70 transition-colors hover:text-xela-ember-soft"
-        aria-label="Explora Xela"
+        aria-label={t.hero.cueLabel}
       >
-        <span className="scroll-cue inline-block">EXPLORA XELA ↓</span>
+        <span className="scroll-cue inline-block">{t.hero.cue}</span>
       </button>
     </section>
   );

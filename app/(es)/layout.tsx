@@ -1,22 +1,7 @@
 import type { Metadata } from "next";
-import { Piazzolla, Figtree } from "next/font/google";
+import { piazzolla, figtree } from "@/lib/fonts";
 import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/site";
-import "./globals.css";
-
-const piazzolla = Piazzolla({
-  variable: "--font-piazzolla",
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const figtree = Figtree({
-  variable: "--font-figtree",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  display: "swap",
-});
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -24,6 +9,10 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   alternates: {
     canonical: "/",
+    languages: {
+      "es-GT": "/",
+      en: "/en",
+    },
   },
   keywords: [
     "Xela",
@@ -59,7 +48,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayoutEs({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="es"

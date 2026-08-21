@@ -47,9 +47,11 @@ function paintMarkerEl(wrap: HTMLElement, active: boolean) {
 export default function RealMap({
   activeId,
   onSelect,
+  ariaLabel,
 }: {
   activeId: string;
   onSelect: (id: string) => void;
+  ariaLabel: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -143,7 +145,7 @@ export default function RealMap({
       ref={containerRef}
       className="real-map-canvas h-full w-full"
       role="img"
-      aria-label="Mapa de Quetzaltenango con los tres destinos"
+      aria-label={ariaLabel}
     />
   );
 }

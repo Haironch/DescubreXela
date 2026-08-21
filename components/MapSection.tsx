@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import RealMap from "@/components/RealMap";
-import { destinations } from "@/data/destinations";
+import { destinations, destinationText } from "@/data/destinations";
 import { scrollToId } from "@/components/SmoothScroll";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-export default function MapSection() {
+export default function MapSection({ locale }: { locale: Locale }) {
   const [activeId, setActiveId] = useState(destinations[0].id);
   const active = destinations.find((d) => d.id === activeId)!;
+  const t = getDictionary(locale);
+  const activeText = destinationText(active, locale);
 
   return (
     <section
@@ -16,16 +19,16 @@ export default function MapSection() {
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-10 md:mb-14">
-          <p className="eyebrow text-xela-ember-soft">Explora Xela</p>
+          <p className="eyebrow text-xela-ember-soft">{t.map.eyebrow}</p>
           <h2 className="title-display mt-3 text-4xl text-xela-mist sm:text-5xl">
-            Tres puntos de partida
+            {t.map.title}
           </h2>
         </div>
 
         <div className="grid items-center gap-10 md:grid-cols-[1.55fr_1fr] md:gap-12">
           {/* mapa */}
           <div className="relative aspect-[10/8] w-full overflow-hidden rounded-2xl border border-white/5 sm:aspect-[10/7]">
-            <RealMap activeId={activeId} onSelect={setActiveId} />
+            <RealMap activeId={activeId} onSelect={setActiveId} ariaLabel={t.map.ariaLabel} />
             <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_0_0_60px_20px_rgba(10,15,12,0.7)]" />
           </div>
 
@@ -45,22 +48,24 @@ export default function MapSection() {
               </span>
             </div>
 
-            <p className="eyebrow text-xela-stone-light">{active.number} — Destino</p>
+            <p className="eyebrow text-xela-stone-light">
+              {active.number} — {t.map.destinationLabel}
+            </p>
             <h3 className="title-display mt-2 text-3xl text-xela-mist">
-              {active.name}
+              {activeText.name}
             </h3>
             <p className="title-display mt-1 text-base italic text-xela-mist/70">
-              {active.tagline}
+              {activeText.tagline}
             </p>
             <p className="mt-4 text-sm leading-relaxed text-xela-stone-light">
-              {active.description}
+              {activeText.description}
             </p>
 
             <button
               onClick={() => scrollToId(`#${active.id}`)}
               className="mt-6 inline-flex items-center gap-2 text-sm tracking-wide text-xela-ember-soft transition-colors hover:text-xela-mist"
             >
-              Explorar destino
+              {t.map.explore}
               <span aria-hidden="true">→</span>
             </button>
           </div>

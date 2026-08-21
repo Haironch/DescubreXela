@@ -2,15 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { scrollToId } from "@/components/SmoothScroll";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-const links = [
-  { label: "Explorar Xela", href: "#mapa" },
-  { label: "Lugares", href: "#parque-central" },
-  { label: "Actividades", href: "#actividades" },
-];
-
-export default function Nav() {
+export default function Nav({ locale }: { locale: Locale }) {
   const [solid, setSolid] = useState(false);
+  const t = getDictionary(locale);
+
+  const links = [
+    { label: t.nav.explore, href: "#mapa" },
+    { label: t.nav.places, href: "#parque-central" },
+    { label: t.nav.activities, href: "#actividades" },
+  ];
+
+  const otherLocalePath = locale === "es" ? "/en" : "/";
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > window.innerHeight * 0.7);
@@ -31,18 +35,27 @@ export default function Nav() {
       >
         XELA
       </button>
-      <ul className="flex items-center gap-3 text-[10px] font-light tracking-[0.06em] text-xela-mist/80 sm:gap-8 sm:text-xs sm:tracking-[0.15em]">
-        {links.map((l) => (
-          <li key={l.href}>
-            <button
-              onClick={() => scrollToId(l.href)}
-              className="whitespace-nowrap transition-colors hover:text-xela-ember-soft"
-            >
-              {l.label.toUpperCase()}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="flex items-center gap-4 sm:gap-8">
+        <ul className="flex items-center gap-3 text-[10px] font-light tracking-[0.06em] text-xela-mist/80 sm:gap-8 sm:text-xs sm:tracking-[0.15em]">
+          {links.map((l) => (
+            <li key={l.href}>
+              <button
+                onClick={() => scrollToId(l.href)}
+                className="whitespace-nowrap transition-colors hover:text-xela-ember-soft"
+              >
+                {l.label.toUpperCase()}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={otherLocalePath}
+          aria-label={locale === "es" ? "Switch to English" : "Cambiar a español"}
+          className="shrink-0 text-lg leading-none opacity-80 transition-opacity hover:opacity-100"
+        >
+          {locale === "es" ? "🇺🇸" : "🇬🇹"}
+        </a>
+      </div>
     </nav>
   );
 }

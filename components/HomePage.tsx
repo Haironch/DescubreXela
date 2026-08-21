@@ -6,31 +6,40 @@ import DestinationSection from "@/components/DestinationSection";
 import ActivitiesSection from "@/components/ActivitiesSection";
 import StructuredData from "@/components/StructuredData";
 import { destinations } from "@/data/destinations";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-export default function Home() {
+export default function HomePage({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
+
   return (
     <SmoothScroll>
-      <StructuredData />
-      <Nav />
+      <StructuredData locale={locale} />
+      <Nav locale={locale} />
       <main>
-        <HeroScene />
-        <MapSection />
-        <DestinationSection destination={destinations[0]} variant="city" />
+        <HeroScene locale={locale} />
+        <MapSection locale={locale} />
+        <DestinationSection
+          destination={destinations[0]}
+          variant="city"
+          locale={locale}
+        />
         <DestinationSection
           destination={destinations[1]}
           variant="ascent"
+          locale={locale}
           align="right"
         />
         <DestinationSection
           destination={destinations[2]}
           variant="viewpoint"
+          locale={locale}
           pullback
           anchor="top"
         />
-        <ActivitiesSection />
+        <ActivitiesSection locale={locale} />
       </main>
       <footer className="bg-xela-black px-6 py-10 text-center text-xs tracking-[0.2em] text-xela-stone/70 sm:px-10">
-        XELA — QUETZALTENANGO, GUATEMALA
+        {t.footer}
       </footer>
     </SmoothScroll>
   );
