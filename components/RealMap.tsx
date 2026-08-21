@@ -106,7 +106,18 @@ export default function RealMap({
       markersRef.current[d.id] = marker;
     });
 
+    // si el usuario se va lejos del mapa mientras la cámara sigue en
+    // movimiento (flyTo), la detenemos para no gastar recursos de fondo.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) map.stop();
+      },
+      { rootMargin: "400px 0px" }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+
     return () => {
+      observer.disconnect();
       map.remove();
       mapRef.current = null;
       markersRef.current = {};

@@ -124,7 +124,6 @@ body {
   animation: star-twinkle 4.5s ease-in-out infinite;
   transform-box: fill-box;
   transform-origin: center;
-  will-change: opacity;
 }
 
 /* el quetzal traza un recorrido corto justo en el hueco entre los dos volcanes */
@@ -189,6 +188,18 @@ body {
   .scene-quetzal-wing {
     animation: none;
   }
+}
+
+/* pausa las animaciones ambientales del hero cuando ya no está en pantalla */
+.scene-paused .scene-clouds,
+.scene-paused .scene-mist,
+.scene-paused .scene-smoke,
+.scene-paused .scene-moon,
+.scene-paused .scene-star,
+.scene-paused .scene-quetzal-flight,
+.scene-paused .scene-quetzal-wing,
+.scene-paused .scroll-cue {
+  animation-play-state: paused;
 }
 
 /* Mapa real (MapLibre) teñido para que combine con la identidad de Xela */

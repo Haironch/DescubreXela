@@ -84,6 +84,21 @@ export default function HeroScene({ locale }: { locale: Locale }) {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // las animaciones ambientales (nubes, neblina, humo, estrellas, quetzal)
+    // corren en bucle infinito; sin esto siguen consumiendo GPU aunque el
+    // usuario ya vaya varias pantallas más abajo.
+    const observer = new IntersectionObserver(
+      ([entry]) => section.classList.toggle("scene-paused", !entry.isIntersecting),
+      { rootMargin: "200px 0px" }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       ref={sectionRef}
