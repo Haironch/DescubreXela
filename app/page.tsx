@@ -4,11 +4,13 @@ import HeroScene from "@/components/HeroScene";
 import MapSection from "@/components/MapSection";
 import DestinationSection from "@/components/DestinationSection";
 import ActivitiesSection from "@/components/ActivitiesSection";
+import StructuredData from "@/components/StructuredData";
 import { destinations } from "@/data/destinations";
 
 export default function Home() {
   return (
     <SmoothScroll>
+      <StructuredData />
       <Nav />
       <main>
         <HeroScene />

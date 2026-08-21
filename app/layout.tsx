@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Piazzolla, Figtree } from "next/font/google";
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/site";
 import "./globals.css";
 
 const piazzolla = Piazzolla({
@@ -17,27 +18,44 @@ const figtree = Figtree({
   display: "swap",
 });
 
-const siteUrl = "https://descubre-xela.vercel.app";
-const title = "Xela — Una ciudad que se descubre caminando";
-const description =
-  "Descubre Quetzaltenango: sus volcanes, su Parque Central, El Baúl y el Mirador Rutzil en una experiencia visual e interactiva.";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title,
-  description,
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "Xela",
+    "Quetzaltenango",
+    "Guatemala",
+    "turismo Guatemala",
+    "qué hacer en Xela",
+    "Parque Central Quetzaltenango",
+    "El Baúl Xela",
+    "Mirador Rutzil",
+  ],
   openGraph: {
-    title,
-    description,
-    url: siteUrl,
-    siteName: "DescubreXela",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "es_GT",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
   },
 };
 
