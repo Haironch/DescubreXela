@@ -51,17 +51,15 @@ export default function Nav({ locale }: { locale: Locale }) {
           </a>
         </li>
       ))}
-      {locale === "es" && (
-        <li>
-          <a
-            href="/negocios"
-            onClick={() => setOpen(false)}
-            className="whitespace-nowrap transition-colors hover:text-xela-ember-soft"
-          >
-            {t.nav.businesses.toUpperCase()}
-          </a>
-        </li>
-      )}
+      <li>
+        <a
+          href={locale === "es" ? "/negocios" : "/en/businesses"}
+          onClick={() => setOpen(false)}
+          className="whitespace-nowrap transition-colors hover:text-xela-ember-soft"
+        >
+          {t.nav.businesses.toUpperCase()}
+        </a>
+      </li>
     </>
   );
 

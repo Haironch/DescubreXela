@@ -3,11 +3,11 @@ import Nav from "@/components/Nav";
 import BusinessDirectory from "@/components/BusinessDirectory";
 
 export const metadata: Metadata = {
-  title: "Negocios en Xela — DescubreXela",
+  title: "Businesses in Xela — DescubreXela",
   description:
-    "Directorio de negocios locales en Quetzaltenango: cafés, restaurantes, hoteles, tours y artesanías.",
+    "Local business directory in Quetzaltenango: cafés, restaurants, hotels, tours, and crafts.",
   alternates: {
-    canonical: "/negocios",
+    canonical: "/en/businesses",
     languages: {
       "es-GT": "/negocios",
       en: "/en/businesses",
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function NegociosPage() {
+export default function BusinessesPage() {
   return (
     <>
-      <Nav locale="es" />
+      <Nav locale="en" />
       <main className="min-h-screen bg-xela-black">
-        <BusinessDirectory locale="es" />
+        <BusinessDirectory locale="en" />
       </main>
       <footer className="bg-xela-black px-6 py-10 text-center text-xs tracking-[0.2em] text-xela-stone/70 sm:px-10">
         XELA — QUETZALTENANGO, GUATEMALA
