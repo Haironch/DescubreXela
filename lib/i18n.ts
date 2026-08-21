@@ -5,7 +5,12 @@ export const defaultLocale: Locale = "es";
 
 export const dictionaries = {
   es: {
-    nav: { explore: "Explorar Xela", places: "Lugares", activities: "Actividades" },
+    nav: {
+      explore: "Explorar Xela",
+      places: "Lugares",
+      activities: "Actividades",
+      businesses: "Negocios",
+    },
     hero: {
       eyebrow: "Quetzaltenango · Guatemala",
       subtitle: "QUETZALTENANGO, GUATEMALA",
@@ -30,7 +35,12 @@ export const dictionaries = {
     footer: "XELA — QUETZALTENANGO, GUATEMALA",
   },
   en: {
-    nav: { explore: "Explore Xela", places: "Places", activities: "Activities" },
+    nav: {
+      explore: "Explore Xela",
+      places: "Places",
+      activities: "Activities",
+      businesses: "Businesses",
+    },
     hero: {
       eyebrow: "Quetzaltenango · Guatemala",
       subtitle: "QUETZALTENANGO, GUATEMALA",
