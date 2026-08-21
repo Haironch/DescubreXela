@@ -1,0 +1,29 @@
+rules_version = '2';
+
+// Pega este contenido en Firebase Console → Firestore Database → Reglas.
+//
+// Lógica:
+// - Cualquiera (sin sesión) puede LEER solo reseñas ya aprobadas.
+// - Solo un usuario autenticado puede CREAR una reseña, y siempre queda
+//   con approved:false — no puede marcarla aprobada él mismo.
+// - Nadie puede editar ni borrar desde el sitio: eso solo se hace desde
+//   la consola de Firebase (ahí tú entras como administrador).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /reviews/{reviewId} {
+      allow read: if resource.data.approved == true;
+
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.approved == false
+        && request.resource.data.businessId is string
+        && request.resource.data.rating is int
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.text is string
+        && request.resource.data.text.size() <= 500;
+
+      allow update, delete: if false;
+    }
+  }
+}

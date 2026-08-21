@@ -1,4 +1,5 @@
-import { businesses, businessText, type BusinessCategory } from "@/data/businesses";
+import { businesses, type BusinessCategory } from "@/data/businesses";
+import BusinessCard from "@/components/BusinessCard";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 const categoryOrder: BusinessCategory[] = [
@@ -37,36 +38,9 @@ export default function BusinessDirectory({ locale }: { locale: Locale }) {
               {t.businesses.categories[group.category] ?? group.category}
             </h2>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              {group.items.map((b) => {
-                const text = businessText(b, locale);
-                return (
-                  <div
-                    key={b.id}
-                    className={`rounded-xl border p-5 transition-colors ${
-                      b.featured
-                        ? "border-xela-ember/40 bg-xela-ember/[0.06]"
-                        : "border-white/10"
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="title-display text-lg text-xela-mist">
-                        {text.name}
-                      </h3>
-                      {b.featured && (
-                        <span className="shrink-0 rounded-full bg-xela-ember px-2.5 py-0.5 text-[0.65rem] font-medium tracking-wide text-xela-black">
-                          {t.businesses.featured}
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-1 text-xs tracking-[0.08em] text-xela-stone-light/80 uppercase">
-                      {text.location}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-xela-stone-light">
-                      {text.description}
-                    </p>
-                  </div>
-                );
-              })}
+              {group.items.map((b) => (
+                <BusinessCard key={b.id} business={b} locale={locale} />
+              ))}
             </div>
           </section>
         ))}
